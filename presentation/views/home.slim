@@ -1,0 +1,30 @@
+.container
+  form role="form" action="/translate" method='post' id='translate-form'
+    .row.horizontal-align.query-bar
+      .col-xs-6
+       .text-left Upload Image:
+       <div class="input-group">
+           <span class="input-group-btn">
+               <span class="btn btn-default btn-file">
+                   Browse… <input type="file" id="imgInp">
+               </span>
+           </span>
+           <input type="text" class="form-control" readonly>
+       </div>
+       <img id='img-upload'/>
+      .col-xs-6
+        .text-left Select Language:
+        <select class="form-control" id="target_lang">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+    </select>
+    .row
+      .col-xs-12.blank-row
+    .row.center-align
+      .col-xs-12
+        button{
+            type='submit' id='translate-form-submit' class='submit'
+            value='submit' class="btn btn-success"
+          }
