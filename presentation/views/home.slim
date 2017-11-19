@@ -1,119 +1,123 @@
 .container
-  form role="form" action="/translate" method='post' id='translate-form'
-    .row.vertical-align.query-bar
+  form enctype="multipart/form-data"  action="/translate" method='post' id='translate-form'
+    .row
+      .col-xs-4
+        .text-right Select image for translation:
       .col-xs-6
-      / .text-left Upload Image:
-      / <div style="position:relative;">
-		  /   <a class='btn btn-primary' href='javascript:;'> Choose File...</a>
-			/   <input type="file" name="img" size="20"  onchange='$("#upload-file-info").html($(this).val());'>
-
+        input {
+          type='file'
+          name="img"
+          class='form-control-file'
+        }
+    .row
+      .col-xs-4
+        .text-right Select target language for translation:
       .col-xs-6
-        .text-left Select Language:
-        SELECT NAME="target_lang" CLASS="btn btn-success"
-          option value="af" Afrikaans</option>
-          option value="sq" Albanian</option>
-          option value="am" Amharic</option>
-          option value="ar" Arabic</option>
-          option value="hy" Armenian</option>
-          option value="az" Azeerbaijani</option>
-          option value="eu" Basque</option>
-          option value="be" Belarusian</option>
-          option value="bn" Bangali</option>
-          option value="bs" Bosnian</option>
-          option value="bg" Bulgarian</option>
-          option value="ca" Catalan</option>
-          option value="ceb" Cebuano</option>
-          option value="zh-TW" Chinese(Traditional)</option>
-          option selected="SELECTED" value="zh-CN" Chinese(Simplified)</option>
-          option value="co" Corsican</option>
-          option value="hr" Croatian</option>
-          option value="cs" Czech</option>
-          option value="da" Danish</option>
-          option value="nl" Dutch</option>
-          option value="en" English</option>
-          option value="eo" Esperanto</option>
-          option value="et" Estonian</option>
-          option value="fi" Finnish</option>
-          option value="fr" French</option>
-          option value="fy" Frisian</option>
-          option value="gl" Galician</option>
-          option value="ka" Georgian</option>
-          option value="de" German</option>
-          option value="el" Greek</option>
-          option value="gu" Gujarati</option>
-          option value="ht" Haitian Creole</option>
-          option value="ha" Hausa</option>
-          option value="haw" Hawaiian</option>
-          option value="iw" Hebrew</option>
-          option value="hi" Hindi</option>
-          option value="hmn" Hmong</option>
-          option value="hu" Hungarian</option>
-          option value="is" Icelandic</option>
-          option value="ig" Igbo</option>
-          option value="id" Indonesian</option>
-          option value="ga" Irish</option>
-          option value="it" Italian</option>
-          option value="ja" Japanese</option>
-          option value="jw" Javanese</option>
-          option value="kn" Kannada</option>
-          option value="kk" Kazakh</option>
-          option value="km" Khmer</option>
-          option value="ko" Korean</option>
-          option value="ku" Kurdish</option>
-          option value="ky" Kyrgyz</option>
-          option value="lo" Lao</option>
-          option value="la" Latin</option>
-          option value="lv" Latvian</option>
-          option value="lt" Lithuanian</option>
-          option value="lb" Luxembourgish</option>
-          option value="mk" Macedonian</option>
-          option value="mg" Malagasy</option>
-          option value="ms" Malay</option>
-          option value="ml" Malayalam</option>
-          option value="mt" Maltese</option>
-          option value="mi" Maori</option>
-          option value="mr" Marathi</option>
-          option value="mn" Mongolian</option>
-          option value="my" Myanmar</option>
-          option value="ne" Nepali</option>
-          option value="no" Norwegian</option>
-          option value="ny" Nyanja</option>
-          option value="ps" Pashto</option>
-          option value="fa" Persian</option>
-          option value="pl" Polish</option>
-          option value="pt" Portuguese</option>
-          option value="pa" Punjabi</option>
-          option value="ro" Romanian</option>
-          option value="ru" Russian</option>
-          option value="sm" Samoan</option>
-          option value="gd" Scots Gaelic</option>
-          option value="sr" Serbian</option>
-          option value="st" Sesotho</option>
-          option value="sn" Shona</option>
-          option value="sd" Sindhi</option>
-          option value="si" Sinhala(Sinhalese)</option>
-          option value="sk" Slovak</option>
-          option value="sl" Slovenian</option>
-          option value="so" Somali</option>
-          option value="es" Spanish</option>
-          option value="su" Sundanese</option>
-          option value="sw" Swahili</option>
-          option value="sv" Swedish</option>
-          option value="tl" Tagalog(Filipino)</option>
-          option value="tg" Tajik</option>
-          option value="ta" Tamil</option>
-          option value="te" Telugu</option>
-          option value="th" Thai</option>
-          option value="tr" Turkish</option>
-          option value="uk" Ukrainian</option>
-          option value="ur" Urdu</option>
-          option value="uz" Uzbek</option>
-          option value="vi" Vietnamese</option>
-          option value="cy" Welsh</option>
-          option value="xh" Xhosa</option>
-          option value="yi" Yiddish</option>
-          option value="yo" Yoruba</option>
-          option value="zu" Zulu</option>
+        select name="target_lang" class="btn btn-success"
+          option value="af" Afrikaans
+          option value="sq" Albanian
+          option value="am" Amharic
+          option value="ar" Arabic
+          option value="hy" Armenian
+          option value="az" Azeerbaijani
+          option value="eu" Basque
+          option value="be" Belarusian
+          option value="bn" Bangali
+          option value="bs" Bosnian
+          option value="bg" Bulgarian
+          option value="ca" Catalan
+          option value="ceb" Cebuano
+          option selected="selected" value="zh-TW" Chinese(Traditional)
+          option value="zh-CN" Chinese(Simplified)
+          option value="co" Corsican
+          option value="hr" Croatian
+          option value="cs" Czech
+          option value="da" Danish
+          option value="nl" Dutch
+          option value="en" English
+          option value="eo" Esperanto
+          option value="et" Estonian
+          option value="fi" Finnish
+          option value="fr" French
+          option value="fy" Frisian
+          option value="gl" Galician
+          option value="ka" Georgian
+          option value="de" German
+          option value="el" Greek
+          option value="gu" Gujarati
+          option value="ht" Haitian Creole
+          option value="ha" Hausa
+          option value="haw" Hawaiian
+          option value="iw" Hebrew
+          option value="hi" Hindi
+          option value="hmn" Hmong
+          option value="hu" Hungarian
+          option value="is" Icelandic
+          option value="ig" Igbo
+          option value="id" Indonesian
+          option value="ga" Irish
+          option value="it" Italian
+          option value="ja" Japanese
+          option value="jw" Javanese
+          option value="kn" Kannada
+          option value="kk" Kazakh
+          option value="km" Khmer
+          option value="ko" Korean
+          option value="ku" Kurdish
+          option value="ky" Kyrgyz
+          option value="lo" Lao
+          option value="la" Latin
+          option value="lv" Latvian
+          option value="lt" Lithuanian
+          option value="lb" Luxembourgish
+          option value="mk" Macedonian
+          option value="mg" Malagasy
+          option value="ms" Malay
+          option value="ml" Malayalam
+          option value="mt" Maltese
+          option value="mi" Maori
+          option value="mr" Marathi
+          option value="mn" Mongolian
+          option value="my" Myanmar
+          option value="ne" Nepali
+          option value="no" Norwegian
+          option value="ny" Nyanja
+          option value="ps" Pashto
+          option value="fa" Persian
+          option value="pl" Polish
+          option value="pt" Portuguese
+          option value="pa" Punjabi
+          option value="ro" Romanian
+          option value="ru" Russian
+          option value="sm" Samoan
+          option value="gd" Scots Gaelic
+          option value="sr" Serbian
+          option value="st" Sesotho
+          option value="sn" Shona
+          option value="sd" Sindhi
+          option value="si" Sinhala(Sinhalese)
+          option value="sk" Slovak
+          option value="sl" Slovenian
+          option value="so" Somali
+          option value="es" Spanish
+          option value="su" Sundanese
+          option value="sw" Swahili
+          option value="sv" Swedish
+          option value="tl" Tagalog(Filipino)
+          option value="tg" Tajik
+          option value="ta" Tamil
+          option value="te" Telugu
+          option value="th" Thai
+          option value="tr" Turkish
+          option value="uk" Ukrainian
+          option value="ur" Urdu
+          option value="uz" Uzbek
+          option value="vi" Vietnamese
+          option value="cy" Welsh
+          option value="xh" Xhosa
+          option value="yi" Yiddish
+          option value="yo" Yoruba
+          option value="zu" Zulu
     .row
       .col-xs-12.blank-row
 
@@ -122,6 +126,6 @@
         button{
             type='submit' id='repo-form-submit' class='submit'
             value='submit' class="btn btn-warning"
-          } TranslateThis!
+          } Translate This!
   .row
     /retrieved data goes here

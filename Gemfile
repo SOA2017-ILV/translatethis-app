@@ -5,6 +5,7 @@ ruby '2.4.2'
 
 # Networking gems
 gem 'http'
+gem 'multipart-post'
 
 # Development/Debugging related
 gem 'pry' # to run console in production
