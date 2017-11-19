@@ -17,14 +17,13 @@ gem 'roda'
 gem 'slim'
 
 # Representers
-gem 'roar'
 gem 'multi_json'
+gem 'roar'
 
 group :test do
   gem 'minitest'
   gem 'minitest-rg'
   gem 'rack-test'
-  gem 'rake'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'

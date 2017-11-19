@@ -25,7 +25,7 @@ module TranslateThis
         routing.post do
           image = routing.params['img']
           target = routing.params['target_lang']
-          halt 400 if image.empty? || target.empty?
+          halt 400 if image.nil? || target.nil?
           ApiGateway.new.send_img_target(image, target)
         end
       end
