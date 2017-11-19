@@ -15,7 +15,7 @@ module TranslateThis
 
     def call_api(method, image, target)
       url_route = [@config.api_url]
-
+    #TODO needs to change to reflect monad structure
       result = HTTP.send(method,
                          url_route,
                          body: 'img=' + image + '&target_lang=' + target)
