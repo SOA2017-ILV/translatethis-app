@@ -8,9 +8,14 @@ module TranslateThis
   class App < Roda
     plugin :render, engine: 'slim', views: 'presentation/views'
     plugin :assets, css: 'style.css', path: 'presentation/assets'
+    plugin :halt
+    opts[:root] = 'presentation/assets'
+    plugin :public, root: 'static'
 
     route do |routing|
       routing.assets
+      routing.public
+      # routing.static
       app = App
 
       #  / route
@@ -25,7 +30,7 @@ module TranslateThis
         routing.post do
           image = routing.params['img']
           target = routing.params['target_lang']
-          halt 400 if image.nil? || target.nil?
+          routing.halt(400) if image.nil? || target.nil?
           ApiGateway.new.send_img_target(image, target)
         end
       end
