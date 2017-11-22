@@ -5,6 +5,7 @@ ruby '2.4.2'
 
 # Networking gems
 gem 'http'
+gem 'multipart-post'
 
 # Development/Debugging related
 gem 'pry' # to run console in production
@@ -17,14 +18,13 @@ gem 'roda'
 gem 'slim'
 
 # Representers
-gem 'roar'
 gem 'multi_json'
+gem 'roar'
 
 group :test do
   gem 'minitest'
   gem 'minitest-rg'
   gem 'rack-test'
-  gem 'rake'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
