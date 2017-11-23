@@ -19,7 +19,7 @@ module TranslateThis
       req_params = Hash.new
       req_params["img"] = UploadIO.new(image[:tempfile], image[:content_type], image[:filename])
       req_params["target_lang"] = target
-      result = Net::HTTP.start(url.host, url.port) do |http|
+      result = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') do |http|
         req = Net::HTTP::Post::Multipart.new(url, req_params)
         http.request(req)
       end
