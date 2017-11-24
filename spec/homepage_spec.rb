@@ -5,15 +5,15 @@ require_relative 'spec_helper'
 describe 'Homepage' do
   before do
     unless @browser
-      #CodePraise::ApiGateway.new.delete_all_repos
-      #@headless = Headless.new
+      @headless = Headless.new
+      @headless.start
       @browser = Watir::Browser.new
     end
   end
 
   after do
     @browser.close
-  #  @headless.destroy
+    @headless.destroy
   end
 
   describe 'NEW Homepage' do
