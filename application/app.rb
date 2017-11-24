@@ -7,7 +7,7 @@ module TranslateThis
   # Web App
   class App < Roda
     plugin :render, engine: 'slim', views: 'presentation/views'
-    plugin :assets, css: 'style.css', path: 'presentation/assets'
+    plugin :assets, css: 'style.css', js: 'app.js', path: 'presentation/assets'
     plugin :halt
     opts[:root] = 'presentation/assets'
     plugin :public, root: 'static'
