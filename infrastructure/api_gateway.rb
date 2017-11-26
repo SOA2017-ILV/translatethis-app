@@ -11,7 +11,7 @@ module TranslateThis
     end
 
     def send_img_target(image, target)
-      call_api_multipart_img(:post, 'translate', image, target)
+      call_api_multipart_img('translate', image, target)
     end
 
     def all_languages

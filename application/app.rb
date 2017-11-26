@@ -29,7 +29,7 @@ module TranslateThis
           languages_json = ApiGateway.new.all_languages
           all_languages = LanguagesRepresenter.new(OpenStruct.new).from_json languages_json
           languages = Views::AllLanguages.new(all_languages)
-          
+
           view 'home', locals: { languages: languages, translations: nil }
         end
         routing.post do

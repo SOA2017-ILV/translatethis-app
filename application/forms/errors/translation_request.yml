@@ -2,3 +2,4 @@ en:
   errors:
     img: 'No image found'
     target: 'No target language found'
+    valid_img: 'File selected is not an image'
