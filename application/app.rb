@@ -34,6 +34,15 @@ module TranslateThis
           ApiGateway.new.send_img_target(image, target)
         end
       end
+
+      routing.on 'languages' do
+        routing.get do
+          languages = ApiGateway.new.all_languages
+          # all_languages = TranslateThis::LanguageRepresenter.new
+          # view 'home', locals: { languages: all_languages }
+          languages
+        end
+      end
     end
   end
 end
