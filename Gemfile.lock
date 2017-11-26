@@ -35,6 +35,15 @@ GEM
       dry-container (~> 0.2, >= 0.2.6)
       dry-core (~> 0.2)
       dry-equalizer (~> 0.2)
+    dry-matcher (0.6.0)
+    dry-monads (0.4.0)
+      dry-core (~> 0.3, >= 0.3.3)
+      dry-equalizer
+    dry-transaction (0.10.2)
+      dry-container (>= 0.2.8)
+      dry-matcher (>= 0.5.0)
+      dry-monads (>= 0.0.1)
+      wisper (>= 1.6.0)
     dry-types (0.12.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
@@ -152,11 +161,14 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    wisper (2.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  dry-monads
+  dry-transaction
   dry-validation
   econfig
   flog

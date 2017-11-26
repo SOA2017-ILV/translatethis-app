@@ -1,0 +1,4 @@
+en:
+  errors:
+    img: 'No image found'
+    target: 'No target language found'

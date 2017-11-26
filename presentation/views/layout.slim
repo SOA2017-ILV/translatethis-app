@@ -12,10 +12,6 @@ html
     / Custom CSS
     / link rel='stylesheet' href='/presentation/assets/css/style.css'
     == assets(:css)
-    / Custom JS
-    == assets(:js)
-  body
-    / JQuery and Bootstrap JS
     script{
       src="https://code.jquery.com/jquery-1.12.4.min.js"
       integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
@@ -26,6 +22,11 @@ html
       integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
       crossorigin="anonymous"
     }
+    / Custom JS
+    == assets(:js)
+  body
+    / JQuery and Bootstrap JS
+    
 
     .container id='html_body'
       header.header 
@@ -33,12 +34,11 @@ html
           h1
             a href="/" TranslateThis
 
-      section
+      .main
         == yield
 
-      footer
-        .row style="text-align: center;"
-          .col-xs-12
-            img style= "width:50px;height:50px;" src="/images/TacodeLogo.png"
-        .row
+      footer.footer.text-center
+        a href="https://github.com/SOA2017-ILV/" target="_blank"
+          img style= "width:50px;height:50px;" src="/images/TacodeLogo.png"
+        .footer-text
         = "TranslateThis is made for demonstration purposes. We cannot warrant full correctness of all content. TranslateThis uses cookies but does not track users or record behavior."

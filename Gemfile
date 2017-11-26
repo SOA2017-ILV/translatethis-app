@@ -22,6 +22,10 @@ gem 'slim'
 gem 'multi_json'
 gem 'roar'
 
+# Services
+gem 'dry-monads'
+gem 'dry-transaction'
+
 group :test do
   gem 'minitest'
   gem 'minitest-rg'

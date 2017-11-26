@@ -16,7 +16,7 @@ module TranslateThis
 
     def all_languages
       # I should just need to call call_api(:get, 'language') here
-      url_route = [@config.api_url, 'language'].flatten.join'/'
+      url_route = [@config.api_url, 'language'].flatten.join '/'
       #method = :get
       result = HTTP.send(:get, url_route)
       raise(result.parse['message']) if result.code >= 300

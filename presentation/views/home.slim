@@ -13,7 +13,7 @@
       .col-xs-4
         .text-right Select target language for translation:
       .col-xs-6
-        == render :lang_select
+        include :lang_select
     .row
       .col-xs-12.blank-row
 
@@ -24,4 +24,6 @@
             value='submit' class="btn btn-warning"
           } Translate This!
   .row
+    - unless translations.nil?
+      include :translations
     /retrieved data goes here
