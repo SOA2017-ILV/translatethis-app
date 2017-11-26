@@ -46,3 +46,12 @@ namespace :quality do
     sh "flog #{CODE}"
   end
 end
+
+namespace :run do
+  task :dev do
+    sh 'rerun -c "rackup -p 3000"'
+  end
+  task :test do
+    sh 'RACK_ENV=test rerun -c "rackup -p 3000"'
+  end
+end

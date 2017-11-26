@@ -12,6 +12,7 @@ gem 'pry' # to run console in production
 gem 'rake' # to run console in production
 
 # Web application related
+gem 'dry-validation'
 gem 'econfig'
 gem 'puma'
 gem 'roda'
