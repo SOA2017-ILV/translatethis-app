@@ -19,8 +19,8 @@ module TranslateThis
     end
 
     def create_translation(input)
-      ApiGateway.new.send_img_target(input[:img], input[:target_lang])
-      Right(input)
+      res = ApiGateway.new.send_img_target(input[:img], input[:target_lang])
+      Right(res)
     rescue StandardError => error
       Left(error.to_s)
     end

@@ -10,7 +10,6 @@ module TranslateThis
                                .join(__dir__, 'errors/translation_request.yml')
 
         def valid_img?(str)
-          puts str[:type]
           (str.has_key? :type) && (str[:type] == 'image/jpeg') || (str[:type] == 'image/png')
         end
       end

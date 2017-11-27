@@ -35,6 +35,9 @@ module TranslateThis
         routing.post do
           create_request = Forms::TranslationRequest.call(routing.params)
           result = CreateTranslation.new.call(create_request)
+          puts 'a'
+          puts result
+          puts 'b'
           #image = routing.params['img']
           #target = routing.params['target_lang']
           #routing.halt(400) if image.nil? || target.nil?

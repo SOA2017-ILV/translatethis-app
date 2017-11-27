@@ -41,6 +41,9 @@ module TranslateThis
         http.request(req)
       end
       raise(result.body.to_s) if result.code.to_i >= 300
+      puts '1'
+      puts result.body.to_s
+      puts '2'
       result.body.to_s
     end
   end
