@@ -26,15 +26,16 @@ html
     == assets(:js)
   body
     / JQuery and Bootstrap JS
-    
+
 
     .container id='html_body'
-      header.header 
+      header.header
         .text-center
           h1
             a href="/" TranslateThis
 
       .main
+        include :flash_bar
         == yield
 
       footer.footer.text-center

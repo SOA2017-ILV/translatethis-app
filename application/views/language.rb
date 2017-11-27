@@ -9,7 +9,7 @@ module TranslateThis
       end
 
       def name
-        @language.language
+        @language.name
       end
 
       def code

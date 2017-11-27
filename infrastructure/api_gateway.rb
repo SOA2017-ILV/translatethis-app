@@ -22,8 +22,10 @@ module TranslateThis
       url_route = [@config.api_url, resources].flatten.join '/'
 
       result = HTTP.send(method, url_route)
-      raise(result.to_s) if result.code >= 300
-      result.to_s
+      # raise(result.parse['message']) if result.code >= 300
+      res_hash = JSON.parse(result.body.to_s)
+      raise(res_hash['message']) if result.code >= 300
+      res_hash['message']
     end
 
     def call_api_multipart_img(route, image, target)
@@ -40,10 +42,7 @@ module TranslateThis
         req = Net::HTTP::Post::Multipart.new(url, req_params)
         http.request(req)
       end
-      raise(result.body.to_s) if result.code.to_i >= 300
-      puts '1'
-      puts result.body.to_s
-      puts '2'
+      raise(result.parse['message']) if result.code.to_i >= 300
       result.body.to_s
     end
   end

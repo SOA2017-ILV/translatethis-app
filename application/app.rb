@@ -12,6 +12,9 @@ module TranslateThis
     plugin :halt
     opts[:root] = 'presentation/assets'
     plugin :public, root: 'static'
+    plugin :flash
+
+    use Rack::Session::Cookie, secret: config.SESSION_SECRET
 
     route do |routing|
       routing.assets
@@ -27,30 +30,30 @@ module TranslateThis
       routing.on 'translate' do
         routing.get do
           languages_json = ApiGateway.new.all_languages
-          all_languages = LanguagesRepresenter.new(OpenStruct.new).from_json languages_json
+          all_languages = LanguagesRepresenter
+                          .new(OpenStruct.new)
+                          .from_json languages_json
           languages = Views::AllLanguages.new(all_languages)
-
           view 'home', locals: { languages: languages, translations: nil }
         end
         routing.post do
           create_request = Forms::TranslationRequest.call(routing.params)
           result = CreateTranslation.new.call(create_request)
-          puts 'a'
-          puts result
-          puts 'b'
-          #image = routing.params['img']
-          #target = routing.params['target_lang']
-          #routing.halt(400) if image.nil? || target.nil?
+          # image = routing.params['img']
+          # target = routing.params['target_lang']
+          # routing.halt(400) if image.nil? || target.nil?
           if result.success?
-            #flash
+            flash.now[:notice] = 'Your image was translated!'
           else
-            #flash
+            flash.now[:error] = result.value
           end
           languages_json = ApiGateway.new.all_languages
-          all_languages = LanguagesRepresenter.new(OpenStruct.new).from_json languages_json
+          all_languages = LanguagesRepresenter
+                          .new(OpenStruct.new)
+                          .from_json languages_json
           languages = Views::AllLanguages.new(all_languages)
-          puts result
-          view 'home', locals: { languages: languages, translations: result }
+          view 'home', locals: { languages: languages,
+                                 translations: result.value }
         end
       end
 
