@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TranslateThis</title>
+  <link rel="stylesheet" crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+  <div class="container" id='html_body'>
+    <header class="header">
+      <div class="text-center">
+        <h1><a href="/">TranslateThis</a></h1>
+      </div>
+    </header>
+    <div class="main">
+      <div>
+        <form enctype="multipart/form-data" action="/translate" method='post' class="form-inline" id='translate-form'>
+          <div class="btn-group" role="group" aria-label="">
+              <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Take a Picture</button>
+              <button type="button" class="btn btn-default btn-upload-file"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Upload Image</button>
+            </div>
+          <input type="file" class="form-control-file hidden" id="">
+          
+        
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <footer class="footer text-center">
+      <a href="https://github.com/SOA2017-ILV/" target="_blank">
+        <img style="width:50px;height:50px;" src="assets/static/images/TacodeLogo.png" alt="">
+      </a>
+      <div class="footer-text">
+          TranslateThis is made for demonstration purposes. We cannot warrant full correctness of all content. TranslateThis uses cookies but does not track users or record behavior.
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
