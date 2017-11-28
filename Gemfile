@@ -32,6 +32,7 @@ group :test do
   gem 'rack-test'
 
   gem 'headless'
+  gem 'page-object'
   gem 'watir'
 end
 
