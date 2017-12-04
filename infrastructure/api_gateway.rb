@@ -36,14 +36,17 @@ module TranslateThis
                                        image[:content_type],
                                        image[:filename])
       req_params['target_lang'] = target
-      result = Net::HTTP.start(url.host,
-                               url.port,
-                               use_ssl: url.scheme == 'https') do |http|
-        req = Net::HTTP::Post::Multipart.new(url, req_params)
-        http.request(req)
-      end
-      raise(result.parse['message']) if result.code.to_i >= 300
-      result.body.to_s
+      result = Net::HTTP.start(
+        url.host,
+        url.port,
+        use_ssl: url.scheme == 'https') do |http|
+          req = Net::HTTP::Post::Multipart.new(url, req_params)
+          http.request(req)
+        end
+      # TODO: Check if this Raise is working
+      res_hash = JSON.parse(result.body.to_s)
+      raise(res_hash['message']) if result.code.to_i >= 300
+      res_hash['message']
     end
   end
 end

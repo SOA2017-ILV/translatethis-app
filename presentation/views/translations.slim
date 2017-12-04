@@ -1,1 +1,13 @@
-p  #{translations}
+- if translations.any?
+    h2
+        | Translations
+    #accordion.panel-group aria-multiselectable="true" role="tablist" 
+        - translations.collection.each.with_index do |translation,index|
+            .panel.panel-default
+                .panel-heading role="tab" id='heading-#{ index }'
+                    h4.panel-title
+                        a aria-controls="collapse-#{ index }" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#collapse-#{ index }" role="button" 
+                            | #{ translation.translated_text }
+                .panel-collapse.collapse aria-labelledby="heading-#{ index }" role="tabpanel" id='collapse-#{ index }' 
+                    .panel-body
+                        | Translated from #{ translation.label_text } to #{ translation.target_lang }

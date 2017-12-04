@@ -1,29 +1,22 @@
-.container
-  form enctype="multipart/form-data"  action="/translate" method='post' id='translate-form'
-    .row
-      .col-xs-4
-        .text-right Select image for translation:
-      .col-xs-6
-        input {
-          type='file'
-          name="img"
-          class='form-control-file'
-        }
-    .row
-      .col-xs-4
-        .text-right Select target language for translation:
-      .col-xs-6
-        include :lang_select
-    .row
-      .col-xs-12.blank-row
+.col-md-9.col-md-offset-3
+  form  id='translate-form'
+    .form-inline
+      .btn-group.form-element role="group" aria-label=""
+        button.btn.btn-default type="button" disabled="disabled"
+          span.glyphicon.glyphicon-camera aria-hidden="true"
+          = " Take a Picture"
+        button.btn.btn-default.btn-upload-file type="button"
+          span.glyphicon.glyphicon-upload aria-hidden="true"
+          = " Upload Image"
+      input.form-control-file.hidden type="file" name="img"   
+      include :lang_select  
+    .img-div
+      img.img-thumbnail.uploaded-img.hidden.form-element src="" alt=""
+    button.btn.btn-primary.hidden.submit {
+      type="submit" 
+      id="repo-form-submit"
+      value="submit"
+      } Translate This!     
 
-    .row.vertical-align
-      .col-xs-10
-        button{
-            type='submit' id='repo-form-submit' class='submit'
-            value='submit' class="btn btn-warning"
-          } Translate This!
-  .row
-    - unless translations.nil?
-      include :translations
-    /retrieved data goes here
+.col-md-12.translations
+

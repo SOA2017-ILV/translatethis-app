@@ -2,7 +2,7 @@
 
 module TranslateThis
   module Views
-    # View object for a single repo's Github project
+    # View object for a single language
     class Language
       def initialize(language)
         @language = language

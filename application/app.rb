@@ -36,24 +36,25 @@ module TranslateThis
           languages = Views::AllLanguages.new(all_languages)
           view 'home', locals: { languages: languages, translations: nil }
         end
+        # Receives params 'img' and 'target_lang'
         routing.post do
           create_request = Forms::TranslationRequest.call(routing.params)
           result = CreateTranslation.new.call(create_request)
-          # image = routing.params['img']
-          # target = routing.params['target_lang']
-          # routing.halt(400) if image.nil? || target.nil?
           if result.success?
             flash.now[:notice] = 'Your image was translated!'
           else
             flash.now[:error] = result.value
           end
-          languages_json = ApiGateway.new.all_languages
-          all_languages = LanguagesRepresenter
-                          .new(OpenStruct.new)
-                          .from_json languages_json
-          languages = Views::AllLanguages.new(all_languages)
-          view 'home', locals: { languages: languages,
-                                 translations: result.value }
+          translations_json = result.value
+          all_translations = TranslationsRepresenter
+                             .new(OpenStruct.new)
+                             .from_json result.value
+          translations_views = Views::AllTranslations.new(all_translations)
+          puts translations_views.any?
+          if translations_views.none?
+            flash.now[:error] = 'No Translations Found'
+          end
+          render :translations, locals: { translations: translations_views }
         end
       end
 

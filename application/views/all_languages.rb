@@ -2,7 +2,7 @@
 
 module TranslateThis
   module Views
-    # View object for colelction of Github projects
+    # View object for collection of languages
     class AllLanguages
       def initialize(all_languages)
         @all_languages = all_languages

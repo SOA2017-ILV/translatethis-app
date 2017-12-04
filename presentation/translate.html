@@ -17,17 +17,32 @@
       </div>
     </header>
     <div class="main">
-      <div>
-        <form enctype="multipart/form-data" action="/translate" method='post' class="form-inline" id='translate-form'>
-          <div class="btn-group" role="group" aria-label="">
-              <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Take a Picture</button>
-              <button type="button" class="btn btn-default btn-upload-file"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Upload Image</button>
+      <div class="col-md-9 col-md-offset-3">
+          <form enctype="multipart/form-data" action="/translate" method='post' class="" id='translate-form'>
+            <div class="form-inline">
+              <div class="btn-group form-element" role="group" aria-label="">
+                <button type="button" class="btn btn-default" disabled>
+                  <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 
+                  Take a Picture
+                </button>
+                <button type="button" class="btn btn-default btn-upload-file">
+                  <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> 
+                  Upload Image
+                </button>
+              </div>
+              <input type="file" class="form-control-file hidden" id="">
+              <select name="target_lang" class="form-control form-element" id="lang_select">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="zh-TW">Chinese (Traditional)</option>
+              </select>
             </div>
-          <input type="file" class="form-control-file hidden" id="">
-          
-        
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            <div>
+              <img src="" alt="" class="img-thumbnail uploaded-img hidden form-element">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">TranslateThis</button>
+          </form>
       </div>
     </div>
     <footer class="footer text-center">
@@ -35,7 +50,8 @@
         <img style="width:50px;height:50px;" src="assets/static/images/TacodeLogo.png" alt="">
       </a>
       <div class="footer-text">
-          TranslateThis is made for demonstration purposes. We cannot warrant full correctness of all content. TranslateThis uses cookies but does not track users or record behavior.
+          TranslateThis is made for demonstration purposes. We cannot warrant full correctness of all content. 
+          TranslateThis uses cookies but does not track users or record behavior.
       </div>
     </footer>
   </div>
