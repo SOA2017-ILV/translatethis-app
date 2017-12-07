@@ -9,12 +9,9 @@ require 'headless'
 
 require './init.rb'
 
-<<<<<<< HEAD
 require 'page-object'
 require_relative 'pages/init'
 
-=======
->>>>>>> rebase conflics resolved
 HOST = 'http://localhost:3000'
 IMAGE = File.expand_path('./spec/fixtures/demo-image.jpg').freeze
 BADFILE = File.expand_path('./spec/fixtures/badfile.pdf').freeze
