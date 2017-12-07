@@ -11,7 +11,7 @@ gem 'multipart-post'
 gem 'pry' # to run console in production
 gem 'rake' # to run console in production
 
-# Web application related
+# Web related
 gem 'econfig'
 gem 'puma'
 gem 'roda'
@@ -41,4 +41,5 @@ group :development, :test do
   gem 'flog'
   gem 'reek'
   gem 'rubocop'
+
 end
