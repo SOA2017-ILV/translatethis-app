@@ -9,22 +9,52 @@ class HomePage
   div(:sucess_message, id: 'flash_bar_success')
 
   h1(:title_heading, id: 'main_header')
-  button(:uploadfile, class: 'btn-upload-file')
+  file_field(:image, name: 'img')
   button(:takepic, class: 'btn-default') # TODO: will probably change
   select_list(:lang_field, name: 'target_lang')
-  button(:translatethis, id: 'repo-form-submit')
+  button(:sendrequest, id: 'repo-form-submit')
 
   h2(:translate_heading, id: 'translate_header')
-  panel_group(:translations_table, id: 'accordion')
+  div(:translations_table, id: 'accordion')
+  a(:firsttranslation, href: '#collapse-0')
+  div(:firstorigintxt, id: 'collapse-0')
 
-  # TODO: create object for returned translation listing.
+  img(:tacode, src: '/images/TacodeLogo.png')
 
-  def upload_for_translation(img_file, target_lang)
-    self.image_field = img_file
-    self.lang_field = target_lang
-    self.translatethis
+  indexed_property(
+    :translations,
+    [
+      [:div, :trans, { id: 'heading-[%s]' }],
+      [:div, :origin, { id: 'collapse-[%s]' }]
+    ]
+  )
+
+  def first_translation
+    translations[0]
   end
 
-  # TODO: create functions to iterate and check validity
+  def second_translation
+    translations[1]
+  end
+
+  def upload_and_translate(img_file, target_lang)
+    self.image = img_file
+    self.lang_field = target_lang
+    translatethis
+  end
+
+  def num_translations_found
+    translations_table.split("\n").size
+  end
+
+  def translations_listed
+    translations_table.split("\n")
+  end
+
+  def first_translation_source_text
+    translations[0].translation.a.click
+    source = translations[0].origin.text
+    source
+  end
   # TODO: create yaml file with expected values for comparision
 end
