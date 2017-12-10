@@ -21,6 +21,7 @@ describe 'Homepage' do
     it '(HAPPY) should see home content' do
       # GIVEN: user is on the home page without translation requests
       visit HomePage do |page|
+        page.wait(60)
         # THEN: user should see basic headers and no translations
         _(page.title_heading).must_equal 'TranslateThis'
         _(page.image.text).must_equal ''
@@ -36,6 +37,7 @@ describe 'Homepage' do
     it '(Happy) should allow translation request' do
       # GIVEN: user is on homepage
       visit HomePage do |page|
+        page.wait(60)
         # WHEN: user uploads image and selects language for translation.
         page.file_field.set(IMAGE)
         page.lang_field = 'zh-TW'
@@ -53,6 +55,7 @@ describe 'Homepage' do
     it '(SAD) should not allow incorrect filetype for translation' do
       # GIVEN: user is on HomePage
       visit HomePage do |page|
+        page.wait(60)
         # WHEN user provides invalid file type
         page.file_field.set(BADFILE)
         # language select should still be interactable
