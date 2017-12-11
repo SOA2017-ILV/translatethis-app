@@ -12,11 +12,9 @@ require './init.rb'
 require 'page-object'
 require_relative 'pages/init'
 
-<<<<<<< HEAD
 require 'page-object'
 require_relative 'pages/init'
 
->>>>>>> more rebase conflict resolution
 HOST = 'http://localhost:3000'
 IMAGE = File.expand_path('./spec/fixtures/demo-image.jpg').freeze
 BADFILE = File.expand_path('./spec/fixtures/badfile.pdf').freeze
