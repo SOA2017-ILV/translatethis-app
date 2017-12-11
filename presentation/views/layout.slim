@@ -52,20 +52,5 @@ html
       integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
       crossorigin="anonymous"
     }
-
-    .container id='html_body'
-      section
-        .row style="vertical-align: middle;"
-          .col-xs-12
-            h1 id ='main_header'
-              a href="/" TranslateThis
-
-      section
-        == yield
-
-      footer
-        .row style="text-align: center;"
-          .col-xs-12
-            img style= "width:50px;height:50px;" src="/images/TacodeLogo.png"
-        .row
-        = "TranslateThis is made for demonstration purposes. We cannot warrant full correctness of all content. TranslateThis uses cookies but does not track users or record behavior."
+    / Custom JS
+    == assets(:js)
