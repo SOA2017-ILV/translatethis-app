@@ -53,9 +53,8 @@ describe 'Homepage' do
       @browser.select_list(:name, 'target_lang').option(:value, 'es').select
       @browser.button(:text, 'Translate This!').click
       # THEN: user should see an error alert and no table of repos
-      _(@browser.div(id: 'flash_bar_danger').text)
-        .must_include 'Failure("No image found")'
-      _(@browser.div(id: 'flash_bar_danger').exists?).must_equal true
+       _(@browser.div(id: 'flash_bar_danger').text).must_include 'Failure("No image found")'
+       _(@browser.div(id: 'flash_bar_danger').exists?).must_equal true
     end
   end
 end
