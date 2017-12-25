@@ -11,13 +11,13 @@ gem 'multipart-post'
 gem 'pry' # to run console in production
 gem 'rake' # to run console in production
 
-# Web application related
+# Web related
 gem 'econfig'
 gem 'puma'
 gem 'roda'
 gem 'slim'
 
-# Representers
+# Application related
 gem 'dry-validation'
 gem 'multi_json'
 gem 'roar'
@@ -32,6 +32,7 @@ group :test do
   gem 'rack-test'
 
   gem 'headless'
+  gem 'page-object'
   gem 'watir'
 end
 
@@ -41,4 +42,5 @@ group :development, :test do
   gem 'flog'
   gem 'reek'
   gem 'rubocop'
+
 end
