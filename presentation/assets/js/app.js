@@ -73,9 +73,9 @@ $(document).ready(function() {
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
                 if (isNaN(message)) {
                     console.log(message);
+                    message = JSON.parse(message);
                     console.log(message['additional_images']);
-                    for (var i = 0; i < message['additional_images'].length; i++ ){
-                        element = message['additional_images'][i];
+                    message['additional_images'].forEach(function(element){
                         console.log(element);
                         var label = element["label"];
                         var image_1 = element["links"][0];
@@ -89,7 +89,7 @@ $(document).ready(function() {
                         $(panel).find(".img-group").removeClass("hidden");
                         $(panel).find(".additional-images .progress").addClass("hidden");
 
-                    }
+                    });
                 } else {
                     if (parseInt(message) > parseInt(currentProgress)) {
                         // Set the progress bar and percentage
