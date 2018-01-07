@@ -71,10 +71,11 @@ $(document).ready(function() {
             client.subscribe('/' + channel, function(message) {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
-                console.log(message)
                 if (isNaN(message)) {
                     if(message['additional_images']){
+                        console.log(message);
                         message['additional_images'].forEach(function(element){
+                            console.log(element)
                             var label = element["label"];
                             var image_1 = element["links"][0];
                             var image_2 = element["links"][1];
@@ -86,6 +87,7 @@ $(document).ready(function() {
                             $(panel).find("h4").removeClass("hidden");
                             $(panel).find(".img-group").removeClass("hidden");
                             $(panel).find(".additional-images .progress").addClass("hidden");
+                            alert("FINISHED");
                         });
                     }
                     bar.attr("aria-valuenow", 100);
