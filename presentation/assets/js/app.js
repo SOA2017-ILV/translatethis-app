@@ -72,24 +72,22 @@ $(document).ready(function() {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
                 if (isNaN(message)) {
-                    if(message['additional_images']){
-                        console.log(message);
-                        message['additional_images'].forEach(function(element){
-                            console.log(element);
-                            var label = element["label"];
-                            var image_1 = element["links"][0];
-                            var image_2 = element["links"][1];
-                            var image_3 = element["links"][2];
-                            var panel = $(".translations .panel[data-label='"+label+"']");
-                            $(panel).find(".img-group .first").attr("src",image_1);
-                            $(panel).find(".img-group .second").attr("src",image_2);
-                            $(panel).find(".img-group .third").attr("src",image_3);
-                            $(panel).find("h4").removeClass("hidden");
-                            $(panel).find(".img-group").removeClass("hidden");
-                            $(panel).find(".additional-images .progress").addClass("hidden");
-                            alert("FINISHED");
-                        });
-                    }
+                    console.log(message);
+                    message['additional_images'].forEach(function(element){
+                        console.log(element);
+                        var label = element["label"];
+                        var image_1 = element["links"][0];
+                        var image_2 = element["links"][1];
+                        var image_3 = element["links"][2];
+                        var panel = $(".translations .panel[data-label='"+label+"']");
+                        $(panel).find(".img-group .first").attr("src",image_1);
+                        $(panel).find(".img-group .second").attr("src",image_2);
+                        $(panel).find(".img-group .third").attr("src",image_3);
+                        $(panel).find("h4").removeClass("hidden");
+                        $(panel).find(".img-group").removeClass("hidden");
+                        $(panel).find(".additional-images .progress").addClass("hidden");
+                        
+                    });
                     bar.attr("aria-valuenow", 100);
                     bar.css("width","100%");
                     bar.text("100%");
