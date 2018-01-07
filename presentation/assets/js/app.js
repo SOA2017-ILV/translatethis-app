@@ -83,7 +83,8 @@ $(document).ready(function() {
                             $(panel).find(".img-group .first").attr("src",image_1);
                             $(panel).find(".img-group .second").attr("src",image_2);
                             $(panel).find(".img-group .third").attr("src",image_3);
-                            
+                            $(panel).find("h4").show();
+                            $(panel).find(".img-group").show();
                             $(panel).find(".additional-images .progress").hide();
                         });
                     }
