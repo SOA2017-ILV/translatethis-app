@@ -56,7 +56,7 @@ module TranslateThis
     end
 
     def call_api(method, resources, params = {})
-      url_route = [@config.api_url, resources].flatten.join '/'
+      url_route = [@config.API_URL, resources].flatten.join '/'
       result = HTTP.send(method, url_route, json: params)
       # raise(result.parse['message']) if result.code >= 300
       res_hash = JSON.parse(result.body.to_s)
@@ -65,7 +65,7 @@ module TranslateThis
     end
 
     def call_api_multipart_img(route, image, target)
-      url_route = [@config.api_url, route].flatten.join '/'
+      url_route = [@config.API_URL, route].flatten.join '/'
       url = URI.parse(url_route)
       req_params = {}
       req_params['img'] = UploadIO.new(image[:tempfile],
