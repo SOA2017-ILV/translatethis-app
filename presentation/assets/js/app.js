@@ -71,7 +71,10 @@ $(document).ready(function() {
             client.subscribe('/' + channel, function(message) {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
+                alert("new Message");
+                console.log(message);
                 if (isNaN(message)) {
+                    console.log(message);
                     if(message['additional_images']){
                         message['additional_images'].forEach(function(element){
                             var label = element["label"];
@@ -79,13 +82,11 @@ $(document).ready(function() {
                             var image_2 = element["links"][1];
                             var image_3 = element["links"][2];
                             var panel = $(".translations .panel[data-label='"+label+"']");
-                            var additional_image_html = "<h4>Additional Images</h4>"+
-                            "<div class='img-group'>" + 
-                            "<img alt='140x140' class='img-thumbnail' src='"+image_1+"' data-holder-rendered='true'>" +
-                            "<img alt='140x140' class='img-thumbnail' src='"+image_2+"' data-holder-rendered='true'>" + 
-                            "<img alt='140x140' class='img-thumbnail' src='"+image_3+"' data-holder-rendered='true'>" +
-                            "</div>";
-                            $(panel).find(".additional-images").html(additional_image_html);
+                            $(panel).find(".img-group .first").attr("src",image_1);
+                            $(panel).find(".img-group .second").attr("src",image_2);
+                            $(panel).find(".img-group .third").attr("src",image_3);
+                            
+                            $(panel).find(".additional-images .progress").hide();
                         });
                     }
                     bar.attr("aria-valuenow", 100);
