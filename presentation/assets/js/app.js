@@ -70,23 +70,23 @@ $(document).ready(function() {
             var reg = /\:(\d+)%/
             client.subscribe('/' + channel, function(message) {
             // Collect progressbar element and percentage
-                var progress = bar.getAttribute("style")
-                var currentProgress = reg.exec(progress)[1]
+                var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
                 if (isNaN(message)) {
-                    bar.setAttribute("style", "width:100%")
-                    bar.setAttribute("class", "progress-bar progress-bar-success progress-bar-striped active")
-                    bar.innerHTML = message
+                    alert("Received something different from a number check console;");
+                    console.log(message)
+                    bar.attr("aria-valuenow", 100);
+                    bar.css("width","100%");
+                    bar.text("100%");
                 } else {
                     if (parseInt(message) > parseInt(currentProgress)) {
                         // Set the progress bar and percentage
-                        bar.setAttribute("aria-valuenow", message)
-                        bar.setAttribute("style", "width:"+message+"%")
-                        bar.innerHTML = message+"%"
-
+                        bar.attr("aria-valuenow", message);
+                        bar.css("width",message+"%");
+                        bar.text(message+"%");
                         // Reoad page at 100%
                         if (message == "100") {
                             setTimeout(function () {
-                                alert("Reached a 100%")
+                                alert("Reached a 100%");
                                 //window.location = window.location.href.split('?')[0]
                             }, 1000);
                         }

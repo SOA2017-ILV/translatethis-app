@@ -1,6 +1,6 @@
 - if result.processing?
     .progress data-wshost="#{processing.ws_host}" data-wschannelid="#{processing.ws_channel_id}"
-        .progress-bar.progress-bar-success.progress-bar-striped.active role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%;min-width: 2em;"
+        .progress-bar.progress-bar-success.progress-bar-striped.active role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"
 - else
     - if images.any?
         - images.collection.each.with_index do |image, index|
