@@ -5,11 +5,11 @@ $(document).ready(function() {
     });
 
     $('.btn-camera').on('click', function(){
-        
+
     });
 
     $('#camera').on('change',function(e){
-        var file = e.target.  files[0]; 
+        var file = e.target.  files[0];
         // Do something with the image file.
         $('#frame').src(URL.createObjectURL(file));
     });
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     $(".form-control-file").on('change', function(){
         showInputImage(this);
-        
+
     });
 
     $("#translate-form").submit(function(e){
@@ -71,7 +71,7 @@ $(document).ready(function() {
             client.subscribe('/' + channel, function(message) {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
-                if (isNaN(message)) {
+                if (message['additional_images']) {
                     console.log(message);
                     console.log(message['additional_images'])
                     message['additional_images'].forEach(function(element){
@@ -87,7 +87,7 @@ $(document).ready(function() {
                         $(panel).find("h4").removeClass("hidden");
                         $(panel).find(".img-group").removeClass("hidden");
                         $(panel).find(".additional-images .progress").addClass("hidden");
-                        
+
                     });
                     message.forEach(function(element){
                         console.log(element);
@@ -118,7 +118,7 @@ $(document).ready(function() {
                 }
                 });
         });
-        
+
     }
 
     function getAdditionalImages(labels) {
@@ -161,7 +161,7 @@ $(document).ready(function() {
                     $('.img-thumbnail').addClass('hidden');
                     $('button.submit').addClass('hidden');
                 }
-              
+
             }
             reader.readAsDataURL(input.files[0]);
         }
