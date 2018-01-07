@@ -3,12 +3,15 @@ development:
   api_url: http://localhost:9292/api/v0.1
   API_HOST: http://localhost:9292
   API_VER: api/v0.1
+  APP_URL: http://localhost:3000
 test:
   api_url: https://localhost:9292/api/v0.1
   API_HOST: http://localhost:9292
   API_VER: api/v0.1
+  APP_URL: http://localhost:3000
 production:
   api_url: https://translate-this-api.herokuapp.com/api/v0.1
   API_HOST: https://translate-this-api.herokuapp.com
   API_VER: api/v0.1
+  APP_URL: https://translate-this-app.herokuapp.com/
 
