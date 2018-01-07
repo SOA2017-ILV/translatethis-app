@@ -72,8 +72,6 @@ $(document).ready(function() {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
                 if (isNaN(message)) {
-                    alert("Received something different from a number check console;");
-                    console.log(message);
                     if(message['additional_images']){
                         message['additional_images'].forEach(function(element){
                             var label = element["label"];
@@ -81,7 +79,8 @@ $(document).ready(function() {
                             var image_2 = element["links"][1];
                             var image_3 = element["links"][2];
                             var panel = $(".translations .panel[data-label='"+label+"']");
-                            var additional_image_html = "<div class='img-group'>" + 
+                            var additional_image_html = "<h4>Additional Images</h4>"+
+                            "<div class='img-group'>" + 
                             "<img alt='140x140' class='img-thumbnail' src='"+image_1+"' data-holder-rendered='true'>" +
                             "<img alt='140x140' class='img-thumbnail' src='"+image_2+"' data-holder-rendered='true'>" + 
                             "<img alt='140x140' class='img-thumbnail' src='"+image_3+"' data-holder-rendered='true'>" +

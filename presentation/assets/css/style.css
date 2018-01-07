@@ -86,3 +86,7 @@ img.uploaded-img {
   width: 140px;
   height: 140px;
 }
+
+.additional-images h4 {
+  text-align: center;
+}
