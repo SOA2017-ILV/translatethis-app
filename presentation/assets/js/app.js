@@ -73,7 +73,22 @@ $(document).ready(function() {
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
                 if (isNaN(message)) {
                     alert("Received something different from a number check console;");
-                    console.log(message)
+                    console.log(message);
+                    if(message['additional_images']){
+                        message['additional_images'].forEach(function(element){
+                            var label = element["label"];
+                            var image_1 = element["links"][0];
+                            var image_2 = element["links"][1];
+                            var image_3 = element["links"][2];
+                            var panel = $(".translations .panel[data-label='"+label+"']");
+                            var additional_image_html = "<div class='img-group'>" + 
+                            "<img alt='140x140' class='img-thumbnail' src='"+image_1+"' data-holder-rendered='true'>" +
+                            "<img alt='140x140' class='img-thumbnail' src='"+image_2+"' data-holder-rendered='true'>" + 
+                            "<img alt='140x140' class='img-thumbnail' src='"+image_3+"' data-holder-rendered='true'>" +
+                            "</div>";
+                            $(panel).find(".additional-images").html(additional_image_html);
+                        });
+                    }
                     bar.attr("aria-valuenow", 100);
                     bar.css("width","100%");
                     bar.text("100%");
@@ -85,10 +100,7 @@ $(document).ready(function() {
                         bar.text(message+"%");
                         // Reoad page at 100%
                         if (message == "100") {
-                            setTimeout(function () {
-                                alert("Reached a 100%");
-                                //window.location = window.location.href.split('?')[0]
-                            }, 1000);
+                            bar.text("Getting Additional Images Now");
                         }
                     }
                 }
