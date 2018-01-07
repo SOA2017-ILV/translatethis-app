@@ -71,7 +71,7 @@ $(document).ready(function() {
             client.subscribe('/' + channel, function(message) {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
-                
+                console.log(message)
                 if (isNaN(message)) {
                     if(message['additional_images']){
                         message['additional_images'].forEach(function(element){
