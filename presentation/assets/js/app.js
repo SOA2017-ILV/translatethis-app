@@ -75,7 +75,7 @@ $(document).ready(function() {
                     if(message['additional_images']){
                         console.log(message);
                         message['additional_images'].forEach(function(element){
-                            console.log(element)
+                            console.log(element);
                             var label = element["label"];
                             var image_1 = element["links"][0];
                             var image_2 = element["links"][1];
