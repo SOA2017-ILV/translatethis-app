@@ -2,12 +2,13 @@
   form  id='translate-form'
     .form-inline
       .btn-group.form-element role="group" aria-label=""
-        button.btn.btn-default type="button" disabled="disabled"
+        button.btn.btn-default.btn-camera type="button"
           span.glyphicon.glyphicon-camera aria-hidden="true"
           = " Take a Picture"
         button.btn.btn-default.btn-upload-file type="button"
           span.glyphicon.glyphicon-upload aria-hidden="true"
           = " Upload Image"
+        
       input.form-control-file.hidden type="file" name="img"   
       include :lang_select  
     .img-div
@@ -18,5 +19,5 @@
       value="submit"
       } Translate This!     
 
-.col-md-12.translations
+.col-md-10.col-md-offset-1.translations
 

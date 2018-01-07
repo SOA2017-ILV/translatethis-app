@@ -3,24 +3,24 @@
 require 'dry/transaction'
 
 module TranslateThis
-  # Transaction to create Translation in API
-  class CreateTranslation
+  # Transaction to get additional images in API
+  class GetAdditionalImages
     include Dry::Transaction
 
     step :validate_input
-    step :create_translation
+    step :get_additional_images
 
     def validate_input(input)
       if input.success?
-        Right(img: input[:img], target_lang: input[:target_lang])
+        Right(labels: input[:labels])
       else
         Left(input.errors.values.join('; '))
       end
     end
 
-    def create_translation(input)
-      res = ApiGateway.new.send_img_target(input[:img], input[:target_lang])
-      Right(res.message)
+    def get_additional_images(input)
+      res = ApiGateway.new.additional_images(input[:labels])
+      Right(res)
     rescue StandardError => error
       Left(error.to_s)
     end

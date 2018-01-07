@@ -64,3 +64,25 @@ img.uploaded-img {
 .translations {
   margin-top: 20px;
 }
+.panel-heading h4 {
+  color: #333333;
+}
+.panel-heading a:hover {
+  color: #333333
+}
+
+.additional-images .progress {
+  width: 90%;
+  margin: 0 auto 10px auto;
+}
+
+.additional-images .img-group {
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.additional-images img {
+  margin: 0 20px;
+  width: 140px;
+  height: 140px;
+}

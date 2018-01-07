@@ -1,7 +1,26 @@
 $(document).ready(function() {
+
     $(".btn-upload-file").on('click',function() {
         $('.form-control-file').click()
     });
+
+    $('.btn-camera').on('click', function(){
+        
+    });
+
+    $('#camera').on('change',function(e){
+        var file = e.target.  files[0]; 
+        // Do something with the image file.
+        $('#frame').src(URL.createObjectURL(file));
+    });
+
+    $('#cameraInput').on('change', function(e){
+        $data = e.originalEvent.target.files[0];
+         $reader = new FileReader();
+         reader.onload = function(evt){
+         $('#your_img_id').attr('src',evt.target.result);
+         reader.readAsDataUrl($data);
+    }});
 
     $(".form-control-file").on('change', function(){
         showInputImage(this);
@@ -24,11 +43,89 @@ $(document).ready(function() {
             processData: false,
             cache: false,
             success: function(data,status){
-                console.log(data);
                 $(".translations").html(data);
+                labels = $('.translations .translation-label').map(function() {
+                    return $(this).text();
+                }).get();
+                getAdditionalImages(labels)
+            },
+            error: function(data, status, errorThrown){
+                console.log("Request");
+                console.log(data);
+                console.log("Status");
+                console.log(status);
+                console.log("Error Thrown: ");
+                console.log(errorThrown);
             }
         });
     });
+
+    function fayeProcessing(wshost, wschannelid) {
+        var channel = wschannelid;
+        var ws_host = wshost;
+        var run_script = ws_host + "/faye.js"
+        $.getScript(run_script).done(function(){
+            var client = new Faye.Client(ws_host + "/faye");
+            var bar = $(".progress-bar");
+            var reg = /\:(\d+)%/
+            client.subscribe('/' + channel, function(message) {
+            // Collect progressbar element and percentage
+                var progress = bar.getAttribute("style")
+                var currentProgress = reg.exec(progress)[1]
+                if (isNaN(message)) {
+                    bar.setAttribute("style", "width:100%")
+                    bar.setAttribute("class", "progress-bar progress-bar-success progress-bar-striped active")
+                    bar.innerHTML = message
+                } else {
+                    if (parseInt(message) > parseInt(currentProgress)) {
+                        // Set the progress bar and percentage
+                        bar.setAttribute("aria-valuenow", message)
+                        bar.setAttribute("style", "width:"+message+"%")
+                        bar.innerHTML = message+"%"
+
+                        // Reoad page at 100%
+                        if (message == "100") {
+                            setTimeout(function () {
+                                alert("Reached a 100%")
+                                //window.location = window.location.href.split('?')[0]
+                            }, 1000);
+                        }
+                    }
+                }
+                });
+        });
+        
+    }
+
+    function getAdditionalImages(labels) {
+        $.ajax({
+            type: 'GET',
+            url: '/additional_images',
+            data: { labels: labels },
+            dataType: 'html',
+            cache: false,
+            success: function(data, status) {
+                console.log("Received DATA");
+                console.log(data);
+                $(".additional-images").html(data);
+                if( $(data).find(".progress")) {
+                    wshost = $(data).data("wshost");
+                    wschannelid = $(data).data("wschannelid")
+                    fayeProcessing(wshost, wschannelid);
+                }
+                console.log("Status");
+                console.log(status);
+            },
+            error: function(data, status, errorThrown){
+                console.log("Request");
+                console.log(data);
+                console.log("Status");
+                console.log(status);
+                console.log("Error Thrown");
+                console.log(errorThrown);
+            }
+        });
+    }
 
     function showInputImage(input) {
         if (input.files && input.files[0]) {

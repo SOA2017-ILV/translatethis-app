@@ -1,0 +1,4 @@
+en:
+  errors:
+    labels: 'No labels found'
+    invalid_type: 'Not an array'

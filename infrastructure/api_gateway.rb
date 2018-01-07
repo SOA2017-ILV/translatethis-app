@@ -6,6 +6,39 @@ require 'http'
 module TranslateThis
   # translate this gateway
   class ApiGateway
+    class ApiResponse
+      HTTP_STATUS = {
+        200 => :ok,
+        201 => :created,
+        202 => :processing,
+        204 => :no_content,
+
+        403 => :forbidden,
+        404 => :not_found,
+        400 => :bad_request,
+        409 => :conflict,
+        422 => :cannot_process,
+
+        500 => :internal_error
+      }.freeze
+
+      attr_reader :status, :message
+
+      def initialize(code, message)
+        @code = code
+        @status = HTTP_STATUS[code]
+        @message = message
+      end
+
+      def ok?
+        HTTP_STATUS[@code] == :ok
+      end
+
+      def processing?
+        HTTP_STATUS[@code] == :processing
+      end
+    end
+
     def initialize(config = TranslateThis::App.config)
       @config = config
     end
@@ -18,14 +51,17 @@ module TranslateThis
       call_api(:get, 'language')
     end
 
-    def call_api(method, resources)
-      url_route = [@config.api_url, resources].flatten.join '/'
+    def additional_images(labels)
+      call_api(:post, 'additional_images', { labels: labels} )
+    end
 
-      result = HTTP.send(method, url_route)
+    def call_api(method, resources, params = {})
+      url_route = [@config.api_url, resources].flatten.join '/'
+      result = HTTP.send(method, url_route, json: params)
       # raise(result.parse['message']) if result.code >= 300
       res_hash = JSON.parse(result.body.to_s)
       raise(res_hash['message']) if result.code >= 300
-      res_hash['message']
+      ApiResponse.new(result.code, res_hash['message'])
     end
 
     def call_api_multipart_img(route, image, target)
@@ -46,7 +82,7 @@ module TranslateThis
       # TODO: Check if this Raise is working
       res_hash = JSON.parse(result.body.to_s)
       raise(res_hash['message']) if result.code.to_i >= 300
-      res_hash['message']
+      ApiResponse.new(result.code.to_i, res_hash['message'])
     end
   end
 end
