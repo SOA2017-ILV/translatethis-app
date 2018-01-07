@@ -71,10 +71,8 @@ $(document).ready(function() {
             client.subscribe('/' + channel, function(message) {
             // Collect progressbar element and percentage
                 var currentProgress = $(".progress-bar").first().attr("aria-valuenow");
-                alert("new Message");
-                console.log(message);
+                
                 if (isNaN(message)) {
-                    console.log(message);
                     if(message['additional_images']){
                         message['additional_images'].forEach(function(element){
                             var label = element["label"];
@@ -117,24 +115,19 @@ $(document).ready(function() {
             dataType: 'html',
             cache: false,
             success: function(data, status) {
-                console.log("Received DATA");
                 console.log(data);
-                $(".additional-images").html(data);
+                $(".additional-images").append(data);
                 if( $(data).find(".progress")) {
                     wshost = $(data).data("wshost");
                     wschannelid = $(data).data("wschannelid")
                     fayeProcessing(wshost, wschannelid);
                 }
-                console.log("Status");
-                console.log(status);
             },
             error: function(data, status, errorThrown){
                 console.log("Request");
                 console.log(data);
                 console.log("Status");
                 console.log(status);
-                console.log("Error Thrown");
-                console.log(errorThrown);
             }
         });
     }
